@@ -1,0 +1,19 @@
+.App {
+  height: 100vh;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding: 0;
+}
+
+.card {
+  margin-top: 10px;
+}
+
+.hover:hover {
+  cursor: pointer;
+}
