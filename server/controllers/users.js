@@ -20,6 +20,7 @@ export const createUser = async (req, res) => {
     const newUser = new User(userParams);
   
     const salt = await bcrypt.genSalt(10);
+    // @ts-ignore
     newUser.password = await bcrypt.hash(userParams.password, salt);
     await newUser.save();
     console.log('User created')

@@ -26,6 +26,8 @@ export const fetchPost = (postId) => axios.get(`${postsURL}/${postId}`);
 
 export const createPost = (newPost) => axios.post(postsURL, newPost, config);
 
+export const updatePost = (postId, postParams) => axios.patch(`${postsURL}/${postId}`, postParams, config)
+
 export const deletePost = (postId) => axios.delete(`${postsURL}/${postId}`, config);
 
 export const logIn = (logInData) => axios.post(logInURL, logInData);

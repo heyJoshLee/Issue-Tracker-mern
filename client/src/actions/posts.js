@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { FETCH_POSTS, FETCH_POST, CREATE_POST, DELETE_POST} from '../types/index';
+import { FETCH_POSTS, FETCH_POST, CREATE_POST, DELETE_POST, UPDATE_POST} from '../types/index';
 
 
 export const getPosts = () => async (dispatch) => {
@@ -37,6 +37,18 @@ export const createPost = (post) => async (dispatch) => {
     });
   } catch (error) {
     console.log(error)
+  }
+}
+
+export const updatePost = (postId, postParams) => async (dispatch) => {
+  try {
+    const { data } = await api.updatePost(postId, postParams);
+    dispatch({
+      type: UPDATE_POST,
+      payload: data
+    })
+  } catch (error) {
+    console.log(error);
   }
 }
 

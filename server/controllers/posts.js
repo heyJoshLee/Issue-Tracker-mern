@@ -30,6 +30,22 @@ export const createPost = async (req, res) => {
   }
 }
 
+export const updatePost = async (req, res) => {
+  const id = req.params.id;
+  const postParams = req.body;
+  console.log(postParams);
+  console.log("Looking for post with id")
+  console.log(id)
+  try {
+    const post = await Post.findByIdAndUpdate(id, postParams, { new: true})
+    console.log("UPDATED post")
+    console.log(post)
+    res.status(200).json(post);
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 export const getPosts = async (req, res) => {
   try {

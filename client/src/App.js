@@ -12,6 +12,7 @@ import LogOut from './components/pages/LogOut';
 import NavBar from './components/shared/NavBar';
 import Post from './components/posts/Post/Post';
 import { getPosts } from './actions/posts';
+import EditPost from './components/posts/EditPost';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
             <Route exact path="/login" component={LogIn} />
             <Route exact path="/signup" component={SignUp} />
             <Route exact path="/logout" component={LogOut} />
+            <Route path="/posts/:id/edit" component={EditPost}/>
             <Route exact path="/posts" component={Posts} />
             <Route path="/posts/:id" component={Post} />
             <Route exact path="/account" component={Account} />
