@@ -10,6 +10,7 @@ import SignUp from './components/pages/SignUp';
 import LogIn from './components/pages/LogIn';
 import LogOut from './components/pages/LogOut';
 import NavBar from './components/shared/NavBar';
+import Footer from './components/shared/Footer';
 import Post from './components/posts/Post/Post';
 import { getPosts } from './actions/posts';
 import EditPost from './components/posts/EditPost';
@@ -27,24 +28,25 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <NavBar />
-        <div className="container">
-  
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/about" component={About} />
-            <Route exact path="/login" component={LogIn} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/logout" component={LogOut} />
-            <Route path="/posts/:id/edit" component={EditPost}/>
-            <Route exact path="/posts" component={Posts} />
-            <Route path="/posts/:id" component={Post} />
-            <Route exact path="/account" component={Account} />
-            
-          </Switch>
-        </div>
-      </Router>
+      <div className="app-container">
+        <Router>
+          <NavBar />
+          <div className="body container">
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
+              <Route exact path="/login" component={LogIn} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/logout" component={LogOut} />
+              <Route path="/posts/:id/edit" component={EditPost}/>
+              <Route exact path="/posts" component={Posts} />
+              <Route path="/posts/:id" component={Post} />
+              <Route exact path="/account" component={Account} />
+            </Switch>
+          </div>
+          <Footer />
+        </Router>
+      </div>
     </div>
   );
 }

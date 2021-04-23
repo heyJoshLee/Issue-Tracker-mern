@@ -1,4 +1,10 @@
-.App {
+html,
+body {
+  height: 100vh;
+}
+
+.app-container,
+body.container {
   height: 100vh;
 }
 
@@ -16,4 +22,15 @@ ul {
 
 .hover:hover {
   cursor: pointer;
+}
+
+.footer {
+  background-color: rgba(10, 10, 10, 0.8);
+  color: snow;
+  position: absolute;
+  bottom: 0px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  text-align: center;
 }
