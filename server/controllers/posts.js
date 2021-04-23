@@ -5,9 +5,12 @@ import User from '../models/user.js';
 
 export const createPost = async (req, res) => {
   const postParams = req.body;
+  console.log("REQ HEADERS")
   console.log(req.headers)
   try {
     const newPost = new Post(postParams);
+
+    console.log(newPost)
     
     // Get use to make 1M relationship
     const user = await User.findById(req.user.id);

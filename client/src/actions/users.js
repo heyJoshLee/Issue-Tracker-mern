@@ -1,11 +1,12 @@
 import * as api from '../api';
 
+import { FETCH_USER, CREATE_USER, UPDATE_USER } from '../types/index';
 
 export const getUser = (userId) => async (dispatch) => {
   try {
     const { data } = await api.fetchLoggedInUser(userId);
     dispatch({
-      type: "FETCH_USER",
+      type: FETCH_USER,
       payload: data
     })
 
@@ -18,7 +19,7 @@ export const createUser = (userParams) => async (dispatch) => {
   try {
     const { data } = await api.createUser(userParams);
     dispatch({
-      type: "CREATE_USER",
+      type: CREATE_USER,
       payload: data
     })
   } catch (error) {
@@ -31,7 +32,7 @@ export const updateUser = (userId, userParams) => async (dispatch) => {
     const { data } = await api.updateUser(userId, userParams);
     console.log(data)
     dispatch({
-      type: "UPDATE_USER",
+      type: UPDATE_USER,
       payload: data
     })
   } catch (error) {

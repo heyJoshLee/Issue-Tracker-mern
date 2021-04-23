@@ -1,11 +1,12 @@
 import * as api from '../api';
+import { FETCH_POSTS, FETCH_POST, CREATE_POST, DELETE_POST} from '../types/index';
+
 
 export const getPosts = () => async (dispatch) => {
   try {
     const { data } = await api.fetchPosts();
-    console.log("GETTING POSTS")
     dispatch({
-      type: "FETCH_POSTS",
+      type: FETCH_POSTS,
       payload: data
     });
   } catch (error) {
@@ -15,13 +16,10 @@ export const getPosts = () => async (dispatch) => {
 
 export const getPost = (postId) => async (dispatch) => {
   try {
-
     const { data } = await api.fetchPost(postId);
-    console.log("GOT Post")
-    console.log(data)
 
     dispatch({
-      type: "FETCH_POST",
+      type: FETCH_POST,
       payload: data
     })
 
@@ -34,7 +32,7 @@ export const createPost = (post) => async (dispatch) => {
   try {
     const { data } = await api.createPost(post);
     dispatch({
-      type: "CREATE_POST",
+      type: CREATE_POST,
       payload: data.post
     });
   } catch (error) {
@@ -46,7 +44,7 @@ export const deletePost = (postId) => async (dispatch) => {
   try {
     await api.deletePost(postId);
     dispatch({
-      type: "DELETE_POST",
+      type: DELETE_POST,
       payload: postId
     });
   } catch (error) {
