@@ -1,0 +1,4 @@
+{
+  "mongoURI": "MONGORL",
+  "jwtSecret": "secret"
+}
