@@ -58,3 +58,30 @@ export const getUsers = async (req, res) => {
     });
   }
 }
+
+export const getUser = async (req, res) => {
+  const id = req.params.id;
+  try {
+    const user = await User.findById(id)
+    console.log("GOT User")
+    console.log(user)
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error)
+  }
+}
+export const updateUser = async (req, res) => {
+  const id = req.params.id;
+  const user_params = req.body;
+  console.log(user_params);
+  console.log("Looking for User with id")
+  console.log(id)
+  try {
+    const user = await User.findByIdAndUpdate(id, user_params, { new: true})
+    console.log("UPDATED User")
+    console.log(user)
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error)
+  }
+}

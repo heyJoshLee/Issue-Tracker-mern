@@ -5,7 +5,7 @@ const postSchema = mongoose.Schema({
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 20
+    maxlength: 120
   },
   body: {
     type: String,
@@ -13,7 +13,7 @@ const postSchema = mongoose.Schema({
     minlength: 3,
     maxlength: 10000
   },
-  userId: {
+  userUsername: {
     type: String,
     required: true
   }

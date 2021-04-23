@@ -1,12 +1,17 @@
 import Post from '../models/post.js';
+import User from '../models/user.js';
 
 
 
 export const createPost = async (req, res) => {
   const postParams = req.body;
+  console.log(req.headers)
   try {
     const newPost = new Post(postParams);
-    newPost.userId = "1";
+    
+    // Get use to make 1M relationship
+    const user = await User.findById(req.user.id);
+    newPost.userUsername = user.username;
 
     await newPost.save();
     return res.status(200).json({
@@ -52,7 +57,6 @@ export const getPost = async (req, res) => {
 
 export const deletePost = async (req, res) => {
   const id = req.params.id;
-
   try {
     await Post.findByIdAndRemove(id);
     res.status(200).json({ message: "Successfully deleted",  id: id});
