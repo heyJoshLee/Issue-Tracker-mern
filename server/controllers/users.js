@@ -4,19 +4,23 @@ import jwt from 'jsonwebtoken';
 import config from 'config';
 
 export const createUser = async (req, res) => {
-  const user_params = req.body;
-
-  const exsistingUser = await User.findOne({ email: user_params.email });
-  if (exsistingUser) {
-    return res.status(500).json({
-      message: "User already exsits."
-    });
-  }
-
-  const newUser = new User(user_params);
+  const userParams = req.body;
+  console.log("TRYING TO CREATE A USER");
   try {
+    const exsistingUser = await User.findOne({ email: userParams.email });
+    console.log(exsistingUser);
+    if (exsistingUser) {
+      return res.status(500).json({
+        message: "User already exsits."
+      });
+    }
+
+    console.log(userParams);
+
+    const newUser = new User(userParams);
+  
     const salt = await bcrypt.genSalt(10);
-    newUser.password = await bcrypt.hash(user_params.password, salt);
+    newUser.password = await bcrypt.hash(userParams.password, salt);
     await newUser.save();
     console.log('User created')
 
