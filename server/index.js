@@ -3,11 +3,13 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import config from 'config';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 
 import userRoutes from './routes/users.js';
 import postRoutes from './routes/posts.js';
 import authRoutes from './routes/auth.js';
 
+dotenv.config();
 const app = express();
 
 app.use(cors());
@@ -18,7 +20,7 @@ app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 app.use('/auth', authRoutes);
 
-const CONNECTION_URL = config.get('mongoURI');
+const CONNECTION_URL = process.env.MONGO_URI;
 
 const PORT = process.env.PORT || 5000;
 

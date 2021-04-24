@@ -5,22 +5,15 @@ import User from '../models/user.js';
 
 export const createPost = async (req, res) => {
   const postParams = req.body;
-  console.log("REQ HEADERS")
-  console.log(req.headers)
   try {
     const newPost = new Post(postParams);
-
-    console.log(newPost)
     
     // Get use to make 1M relationship
     const user = await User.findById(req.user.id);
     newPost.userUsername = user.username;
 
     await newPost.save();
-    return res.status(200).json({
-      message: "Post successfully created",
-      post: newPost
-    })
+    return res.status(200).json(newPost)
 
   } catch (error) {
     console.log(error);
@@ -43,6 +36,7 @@ export const updatePost = async (req, res) => {
     res.status(200).json(post);
   } catch (error) {
     console.log(error)
+    res.status(500).json({ message: "Post was not updated."});
   }
 }
 
@@ -71,6 +65,7 @@ export const getPost = async (req, res) => {
     res.status(200).json(post);
   } catch (error) {
     console.log(error)
+    res.status(500).json({ message: "Post was not created."});
   }
 }
 
@@ -81,5 +76,6 @@ export const deletePost = async (req, res) => {
     res.status(200).json({ message: "Successfully deleted",  id: id});
   } catch (error) {
     console.log(error)
+    res.status(500).json({ message: "Post was not delete."});
   }
 }

@@ -9,7 +9,7 @@ export const logIn = async (req, res) => {
   const user = await User.findOne({ email: logInParams.email });
   if (!user) {
     console.log("USER NOT FOUND");
-    return res.status(500).json({
+    res.status(501).json({
       message: "Invalid credentials."
     });
   }
@@ -18,7 +18,7 @@ export const logIn = async (req, res) => {
 
   if (!passwordMatches) {
     console.log("WRONG PASSWORD")
-    return res.status(500).json({
+    return res.status(400).json({
       message: "Invalid credentials."
     })
   }
@@ -39,6 +39,4 @@ export const logIn = async (req, res) => {
         loggedIn: true
       });
     })
-
-
 }
