@@ -14,6 +14,7 @@ import Footer from './components/shared/Footer';
 import Post from './components/posts/Post/Post';
 import { getPosts } from './actions/posts';
 import EditPost from './components/posts/EditPost';
+import FlashMessages from './components/shared/FlashMessages';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
     dispatch(getPosts());
   }, [dispatch]);
 
+  // @ts-ignore
   const auth = useSelector((state) => state.auth );
 
   return (
@@ -32,6 +34,7 @@ function App() {
         <Router>
           <NavBar />
           <div className="body container">
+            <FlashMessages />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/about" component={About} />

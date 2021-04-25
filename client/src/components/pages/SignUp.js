@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 const SignUp = ({ history }) => {
 
   const dispatch = useDispatch();
+  // @ts-ignore
   const auth = useSelector((state) => state.auth);
   useEffect(() => {
     if (auth) { history.push("/"); }

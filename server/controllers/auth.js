@@ -1,12 +1,13 @@
 import User from '../models/user.js';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import config from 'config';
 
 export const logIn = async (req, res) => {
   const logInParams = req.body;
+  const emailParams = logInParams.email.toLowerCase();
+  console.log(emailParams)
 
-  const user = await User.findOne({ email: logInParams.email });
+  const user = await User.findOne({ email: emailParams });
   if (!user) {
     console.log("USER NOT FOUND");
     res.status(501).json({
@@ -30,7 +31,7 @@ export const logIn = async (req, res) => {
       }
     }
 
-    jwt.sign(payload, config.get('jwtSecret'), (error, token) => {
+    jwt.sign(payload, process.env.JWT_SECRET, (error, token) => {
       if (error) throw error;
       console.log('Successfully logged in');
       return res.status(200).json({

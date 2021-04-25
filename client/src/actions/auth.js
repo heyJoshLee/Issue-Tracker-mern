@@ -1,5 +1,6 @@
 import * as api from '../api';
-import { LOG_IN, LOG_OUT} from '../types/index';
+import { LOG_IN, LOG_OUT, ADD_FLASH_MESSAGE} from '../types/index';
+import { errorFlashMessage, addFlashMessage } from './helpers.js'; 
 
 export const logIn = (logInData) => async (dispatch) => {
   try {
@@ -10,7 +11,7 @@ export const logIn = (logInData) => async (dispatch) => {
       payload: data
     });
   } catch (error) {
-    console.log(error)
+    errorFlashMessage(error, dispatch, "danger")
   }
 }
 
