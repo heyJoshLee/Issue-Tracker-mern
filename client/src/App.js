@@ -1,29 +1,21 @@
-import './App.css';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import './App.scss';
+import './one-page-wonder.css';
+import { useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import Home from './components/pages/Home';
 import About from './components/pages/About';
-import Posts from './components/posts/Posts';
 import Account from './components/pages/Account';
 import SignUp from './components/pages/SignUp';
 import LogIn from './components/pages/LogIn';
 import LogOut from './components/pages/LogOut';
 import NavBar from './components/shared/NavBar';
-import Footer from './components/shared/Footer';
-import Post from './components/posts/Post/Post';
-import { getPosts } from './actions/posts';
-import EditPost from './components/posts/EditPost';
 import FlashMessages from './components/shared/FlashMessages';
-
+import NewOrganization from './components/organizations/NewOrganization';
+import Organizations from './components/organizations/Organizations';
+import Organization from './components/organizations/Organization';
+import Project from './components/projects/Project';
 
 function App() {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
 
   // @ts-ignore
   const auth = useSelector((state) => state.auth );
@@ -41,13 +33,13 @@ function App() {
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/logout" component={LogOut} />
-              <Route path="/posts/:id/edit" component={EditPost}/>
-              <Route exact path="/posts" component={Posts} />
-              <Route path="/posts/:id" component={Post} />
+              <Route path="/organizations/:id/projects/:id" component={Project} />
+              <Route exact path="/organizations/new" component={NewOrganization} />
+              <Route exact path="/organizations/:id" component={Organization} />
+              <Route exact path="/organizations" component={Organizations} />
               <Route exact path="/account" component={Account} />
             </Switch>
           </div>
-          <Footer />
         </Router>
       </div>
     </div>

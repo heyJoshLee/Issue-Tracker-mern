@@ -14,7 +14,11 @@ const Account = ({ history, match }) => {
   });
 
   useEffect(() => {
-    dispatch(getUser(auth.user._id));
+    if (auth) {
+      dispatch(getUser(auth.user._id));
+    } else {
+      history.push('/login')
+    }
   }, []);
 
   if (user && formData.username === "" && formData.email === "") {

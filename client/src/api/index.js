@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 // set token if it's in localStorage
 let token = JSON.parse(localStorage.getItem('auth'))?.token;
 let configFromLocalStorage = null;
@@ -14,45 +13,103 @@ if (token) {
 
 const BASEURL = 'http://localhost:5000';
 
-const postsURL =`${BASEURL}/posts`;
+const projectsURL =`${BASEURL}/projects`;
+
+const organizationsURL =`${BASEURL}/organizations`;
 
 const logInURL = `${BASEURL}/auth/login`;
 
-const usersURL = `${BASEURL}/users`
+const usersURL = `${BASEURL}/users`;
+
+const stickyMessagesURL = `${BASEURL}/stickyMessages`;
 
 
 
-// Posts
+// Projects
 
-export const fetchPosts = () => axios.get(postsURL);
+export const fetchProjects = (orgId) => {
+  return axios.get(`${organizationsURL}/${orgId}/projects`);
+}
 
-export const fetchPost = (postId) => axios.get(`${postsURL}/${postId}`);
-
-export const createPost = (newPost, userToken = token) =>  {
-  return axios.post(postsURL, newPost, {
+export const createProject = (newProject, orgId, userToken = token) =>  {
+  console.log("URL")
+  console.log(`${organizationsURL}/${orgId}/projects`)
+  return axios.post(`${organizationsURL}/${orgId}/projects`, newProject, {
     headers: { 
       "x-auth-token": userToken
     }
   });
 }
 
-export const updatePost = (postId, postParams, userToken = token) => {
-  return axios.patch(`${postsURL}/${postId}`, postParams, {
+
+export const fetchProject = (orgId, projectId) =>  { 
+  console.log('url')
+  console.log(`${organizationsURL}/${orgId}/projects${projectId}`)
+  return axios.get(`${organizationsURL}/${orgId}/projects/${projectId}`);
+}
+
+
+export const updateProject = (projectId, postParams, userToken = token) => {
+  return axios.patch(`${projectsURL}/${projectId}`, postParams, {
     headers: { 
       "x-auth-token": userToken
     }
   })
 }
 
-
-export const deletePost = (postId, userToken = token) =>  {
+export const deleteProject = (projectId, userToken = token) =>  {
   console.log(userToken)
-  return axios.delete(`${postsURL}/${postId}`, {
+  return axios.delete(`${projectsURL}/${projectId}`, {
     headers: { 
       "x-auth-token": userToken
     }
   });
 }
+
+
+// Organizations
+export const fetchOrganizations = (userToken = token) => {
+  return axios.get(organizationsURL, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+} 
+
+export const createOrganization = (newOrganization, userToken = token) =>  {
+  return axios.post(organizationsURL, newOrganization, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+
+export const fetchOrganization = (organizationId, userToken = token) => {
+  return axios.get(`${organizationsURL}/${organizationId}`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+
+export const updateOrganization = (organizationId, organizationParams, userToken = token) => {
+  return axios.patch(`${organizationsURL}/${organizationId}`, organizationParams, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  })
+}
+
+export const deleteOrganization = (organizationId, userToken = token) =>  {
+  return axios.delete(`${organizationsURL}/${organizationId}`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
 
 
 // Users
@@ -65,3 +122,50 @@ export const updateUser = (userId, userParams, config = configFromLocalStorage) 
 
 export const createUser = (userParams) => axios.post(usersURL, userParams);
 
+
+// StickyMessages
+
+export const fetchStickyMessages = (objectType, objectId, userToken = token) => {
+  return axios.get(`${stickyMessagesURL}/${objectType}/${objectId}`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+export const createStickyMessage = (newStickyMessage, objectType, objectId, userToken = token) =>  {
+  return axios.post(`${stickyMessagesURL}/${objectType}/${objectId}`, {
+    stickyMessageParams: newStickyMessage,
+    objectType, 
+    objectId
+  }, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+
+// export const fetchProject = (orgId, projectId) =>  { 
+//   console.log('url')
+//   console.log(`${organizationsURL}/${orgId}/projects${projectId}`)
+//   return axios.get(`${organizationsURL}/${orgId}/projects/${projectId}`);
+// }
+
+
+// export const updateProject = (projectId, postParams, userToken = token) => {
+//   return axios.patch(`${projectsURL}/${projectId}`, postParams, {
+//     headers: { 
+//       "x-auth-token": userToken
+//     }
+//   })
+// }
+
+// export const deleteProject = (projectId, userToken = token) =>  {
+//   console.log(userToken)
+//   return axios.delete(`${projectsURL}/${projectId}`, {
+//     headers: { 
+//       "x-auth-token": userToken
+//     }
+//   });
+// }

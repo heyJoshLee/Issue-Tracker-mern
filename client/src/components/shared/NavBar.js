@@ -4,9 +4,8 @@ import { useSelector } from 'react-redux';
 
 const NavBar = () => {
 
+  // @ts-ignore
   const auth = useSelector((state) => state.auth);
-
-
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -30,22 +29,19 @@ const NavBar = () => {
               </li>
             </>
             ) : (
-            <>
+            <>        
+              <li className="nav-item">
+                <Link to="/organizations/" className="nav-link">My Organizations</Link>
+              </li>
               <li className="nav-item">
                 <Link to="/account" className="nav-link">My Account</Link>
               </li>
-
               <li className="nav-item">
                 <Link to="/logout" className="nav-link">Log Out</Link>
               </li>
             </>) 
         }
 
-
-         
-          <li className="nav-item">
-            <Link to="/posts" className="nav-link">Posts</Link>
-          </li>
         </ul>
       </div>
     </nav>

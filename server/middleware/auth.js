@@ -6,7 +6,6 @@ const auth = (req, res, next) => {
   try {
     // IS TOKEN VALID?
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
     // IF SO, PASS USER TO REQ OBJECT
     req.user = decoded.user;
     next();

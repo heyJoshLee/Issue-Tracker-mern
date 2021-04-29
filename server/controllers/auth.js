@@ -4,6 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export const logIn = async (req, res) => {
   const logInParams = req.body;
+  // FORCE EMAIL TO LOWER CASE
   const emailParams = logInParams.email.toLowerCase();
   console.log(emailParams)
 
@@ -15,6 +16,7 @@ export const logIn = async (req, res) => {
     });
   }
 
+  // @ts-ignore
   const passwordMatches = await bcrypt.compare(logInParams.password, user.password);
 
   if (!passwordMatches) {

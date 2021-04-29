@@ -6,20 +6,26 @@ import dotenv from 'dotenv';
 
 // ROUTES IMPORT
 import userRoutes from './routes/users.js';
-import postRoutes from './routes/posts.js';
+import projectRoutes from './routes/projects.js';
 import authRoutes from './routes/auth.js';
+import organizationRoutes from './routes/organizations.js';
+import stickyMessagesRoutes from './routes/stickyMessages.js'; 
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
+// @ts-ignore
 app.use(bodyParser.json({ limit: '30mb', extended :true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended :true }))
 
 // ROUTES
 app.use('/users', userRoutes);
-app.use('/posts', postRoutes);
 app.use('/auth', authRoutes);
+app.use('/organizations', organizationRoutes);
+app.use('/organizations/:id/projects', projectRoutes);
+app.use('/stickyMessages', stickyMessagesRoutes); 
+
 
 // CONNECT TO MONGO DB
 const CONNECTION_URL = process.env.MONGO_URI;

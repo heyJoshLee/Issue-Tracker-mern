@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT, DELETE_POST, UPDATE_POST, CLEAR_MESSAGES, ADD_FLASH_MESSAGE } from '../types/index';
+import { LOG_IN, LOG_OUT,CLEAR_MESSAGES, ADD_FLASH_MESSAGE } from '../types/index';
 
 export default (flashMessages = [], action ) => {
   switch (action.type) {
@@ -6,10 +6,6 @@ export default (flashMessages = [], action ) => {
       return [...flashMessages, {type: 'success', message: "You are now logged in."}]
     case LOG_OUT:
       return [...flashMessages, {type: 'success', message: "You are now logged out."}]
-    case DELETE_POST:
-      return [...flashMessages, {type: 'success', message: "Post deleted."}]
-    case UPDATE_POST:
-      return [...flashMessages, {type: 'success', message: "Post updated."}]
     case ADD_FLASH_MESSAGE:
       return [...flashMessages, action.payload]
     case CLEAR_MESSAGES:

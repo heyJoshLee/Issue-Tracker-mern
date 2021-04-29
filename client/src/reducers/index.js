@@ -1,15 +1,21 @@
 import { combineReducers } from 'redux';
 
-import posts from './posts';
+import projects from './projects';
 import auth from './auth';
-import post from './post';
+import project from './project';
+import organization from './organization';
+import organizations from './organizations';
 import user from './user';
 import flashMessages from './flashMessages';
+import stickyMessages from './stickyMessages';
 
 export default combineReducers({
-  posts: posts,
+  projects: projects,
   auth: auth,
-  post: post,
+  project: project,
   user: user,
-  flashMessages: flashMessages
+  flashMessages: flashMessages,
+  organization: organization,
+  organizations: organizations,
+  stickyMessages: stickyMessages
 });
