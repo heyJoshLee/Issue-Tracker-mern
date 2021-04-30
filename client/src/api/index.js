@@ -145,14 +145,6 @@ export const createStickyMessage = (newStickyMessage, objectType, objectId, user
   });
 }
 
-
-// export const fetchProject = (orgId, projectId) =>  { 
-//   console.log('url')
-//   console.log(`${organizationsURL}/${orgId}/projects${projectId}`)
-//   return axios.get(`${organizationsURL}/${orgId}/projects/${projectId}`);
-// }
-
-
 // export const updateProject = (projectId, postParams, userToken = token) => {
 //   return axios.patch(`${projectsURL}/${projectId}`, postParams, {
 //     headers: { 
@@ -169,3 +161,42 @@ export const createStickyMessage = (newStickyMessage, objectType, objectId, user
 //     }
 //   });
 // }
+
+
+
+// Issues
+
+export const fetchIssues = (organizationId, projectId, userToken = token) => {
+  return axios.get(`${BASEURL}/organizations/${organizationId}/projects/${projectId}/issues`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+export const createIssue = (organizationId, projectId, newIssue, userToken = token) =>  {
+  return axios.post(`${BASEURL}/organizations/${organizationId}/projects/${projectId}/issues`, {
+    issueParams: newIssue
+  }, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+export const deleteIssue = (organizationId, projectId, issueId, userToken = token) =>  {
+  return axios.delete(`${BASEURL}/organizations/${organizationId}/projects/${projectId}/issues/${issueId}`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+export const updateIssue = (organizationId, projectId, issueId, issueParams, userToken = token) =>  {
+  return axios.patch(`${BASEURL}/organizations/${organizationId}/projects/${projectId}/issues/${issueId}`, {
+    issueParams: issueParams
+  }, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}

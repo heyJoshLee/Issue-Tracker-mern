@@ -2,6 +2,7 @@ import React, {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProject } from '../../actions/projects';
 import jQuery from 'jquery';
+import { Plus } from 'react-bootstrap-icons';
 
 const Form = () => {
 
@@ -24,7 +25,7 @@ const Form = () => {
   return (
     <div>
       <button type="button" className="mt-4 btn btn-primary btn-block" data-toggle="modal" data-target="#newProject">
-        New Project
+        <Plus size={32} /> New Project
       </button>
 
       <div className="modal fade" id="newProject" tabIndex="-1" role="dialog" aria-labelledby="newProjectLabel" aria-hidden="true">

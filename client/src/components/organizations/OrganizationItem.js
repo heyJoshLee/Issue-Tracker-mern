@@ -7,7 +7,7 @@ const OrganizationItem = ({ org }) => {
       <h5 className="card-title">{org.name}</h5>
       <Link to={`/organizations/${org._id}`} className="btn btn-primary">Enter</Link>
       </div>
-    </div>
+    </div> 
   );
 }
 

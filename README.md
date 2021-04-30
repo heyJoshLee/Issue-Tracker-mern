@@ -6,7 +6,10 @@ Issues have comments
 
 TODO:
 
-- WHERE I LEFT OFF: Add organization params to api for projects becuase the server is set up to do organizations/:id/projects
+- Add Issues
+  * Create issues
+  * Sort issues
+  * pagination
 
 - Prompt user to join an organization if they are not in one
 - User signs up or logs in
@@ -24,7 +27,7 @@ TODO:
   - Has sticky messages
     - Messages that stay at the top of the page for announcements.
 - Project page
-  - Has sticky message and issues.
+  - Issues.
   - Can create sticky message. Admin
   - Can create isssue.
 - Issues

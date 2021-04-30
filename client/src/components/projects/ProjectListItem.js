@@ -7,7 +7,7 @@ import { Trash, PencilSquare } from 'react-bootstrap-icons';
 const ProjectListItem = ({project}) => {
 
   const auth = useSelector((state) => state.auth);
-  const org = useSelector(state => state.organization)
+  const org = useSelector(state => state.organization);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -27,9 +27,8 @@ const ProjectListItem = ({project}) => {
   return (
     <div className="card mr-2">
       <div className="card-body">
-        <blockquote className="blockquote mb-0">
-          <Link to={`/organizations/${org._id}/projects/${project._id}`}>{project.title}</Link> 
-        </blockquote>
+        <h5 className="card-title">{project.title}</h5>
+          <Link to={`/organizations/${org._id}/projects/${project._id}`} className="btn btn-primary">Enter</Link> 
         { renderAuthorButtons() }
       </div>
     </div>

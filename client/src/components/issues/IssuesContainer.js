@@ -1,10 +1,30 @@
-import React from 'react'
-import Issue from './Issue';
+import React, { useEffect } from 'react'
+import IssueListItem from './IssueListItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { getIssues } from '../../actions/issues';
 
 const IssuesContainer = () => {
+
+  const dispatch = useDispatch();
+  const issues = useSelector(state => state.issues);
+  const org = useSelector(state => state.organization);
+  const project = useSelector(state => state.project)
+
+
+  useEffect(() => {
+    dispatch(getIssues(org._id, project._id));
+  }, [])
+
+
+  const renderItems = () => {
+    return issues.map(issue => {
+      return <IssueListItem issue={issue} />
+    })
+  }
+
+  if (!issues) {return <div>Loading...</div>}
   return (
     <>
-      <h2 className="text-center mt-4 mb-4">Issues</h2>
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         <li className="nav-item">
           <a className="nav-link active" id="active-tab" data-toggle="tab" href="#active" role="tab" aria-controls="active" aria-selected="true">Active</a>
@@ -18,7 +38,9 @@ const IssuesContainer = () => {
       </ul>
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="active" role="tabpanel" aria-labelledby="active-tab">
-        <Issue />
+        <div id="accordion-issues">
+          {renderItems()}
+        </div>
 
         </div>
         <div className="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="completed-tab">

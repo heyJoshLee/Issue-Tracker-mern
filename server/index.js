@@ -9,7 +9,8 @@ import userRoutes from './routes/users.js';
 import projectRoutes from './routes/projects.js';
 import authRoutes from './routes/auth.js';
 import organizationRoutes from './routes/organizations.js';
-import stickyMessagesRoutes from './routes/stickyMessages.js'; 
+import stickyMessageRoutes from './routes/stickyMessages.js'; 
+import issueRoutes from './routes/issues.js';
 
 dotenv.config();
 const app = express();
@@ -24,7 +25,8 @@ app.use('/users', userRoutes);
 app.use('/auth', authRoutes);
 app.use('/organizations', organizationRoutes);
 app.use('/organizations/:id/projects', projectRoutes);
-app.use('/stickyMessages', stickyMessagesRoutes); 
+app.use('/organizations/:orgId/projects/:projectId/issues', issueRoutes);
+app.use('/stickyMessages', stickyMessageRoutes); 
 
 
 // CONNECT TO MONGO DB

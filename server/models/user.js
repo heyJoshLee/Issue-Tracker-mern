@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
   },
   organizationIds: {
     type: [String]
+  },
+  orgAdminIds: {
+    type: [String]
   }
 });
 

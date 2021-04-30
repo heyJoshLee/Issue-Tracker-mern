@@ -25,13 +25,23 @@ const Organization = (props) => {
     <div className="organization-page">
         <ReturnLink destination={`/organizations/`} anchorText={"< Back to My Organizations"} />
         <h1 className="text-center">{org.name}</h1>
-        <ProjectForm />
-        <h2 className="text-center mb-4 mt-4">Sticky Messages</h2>
-        <StickyMessageForm type="organization" />
-        <StickyMessagesList type="organization" />
-        <h2 className="text-center mt-4">Projects</h2>        
         <div className="row">
-          <ProjectsList />
+          <h2 className="mt-4 col-8">Sticky Messages</h2>        
+            <div className="col-4">
+              <StickyMessageForm/>
+            </div>
+        </div>
+
+        <StickyMessagesList type="organization" />
+        <hr />
+        <div className="row">
+        <h2 className="mt-4 col-8">Projects</h2>        
+          <div className="col-4">
+            <ProjectForm/>
+          </div>
+        </div>
+        <div className="text-center">
+          <ProjectsList/>
         </div>
     </div>
   )

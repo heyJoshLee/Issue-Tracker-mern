@@ -6,10 +6,12 @@ const ProjectsList = (props) => {
   const projects = useSelector(state => state.projects);
   if (!projects) { return <div>Loading...</div> }
   return (
-    <div className="projects-list">
-      {projects.map(project => {
-        return <ProjectListItem project={project} />
-      })}
+    <div>
+      <ul>
+        {projects.map(project => {
+          return <ProjectListItem project={project} />
+        })}
+      </ul>
     </div>
   )
 }

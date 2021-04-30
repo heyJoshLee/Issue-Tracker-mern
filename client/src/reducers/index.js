@@ -8,6 +8,7 @@ import organizations from './organizations';
 import user from './user';
 import flashMessages from './flashMessages';
 import stickyMessages from './stickyMessages';
+import issues from './issues';
 
 export default combineReducers({
   projects: projects,
@@ -17,5 +18,6 @@ export default combineReducers({
   flashMessages: flashMessages,
   organization: organization,
   organizations: organizations,
-  stickyMessages: stickyMessages
+  stickyMessages: stickyMessages,
+  issues: issues
 });

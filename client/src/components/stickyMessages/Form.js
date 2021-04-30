@@ -2,6 +2,7 @@ import React, {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import jQuery from 'jquery';
 import { createStickyMessage } from '../../actions/stickyMessages';
+import { Plus } from 'react-bootstrap-icons';
 
 const Form = ({type}) => {
   const dispatch = useDispatch();
@@ -30,7 +31,7 @@ const Form = ({type}) => {
   return (
     <div>
       <button type="button" className="mt-4 btn btn-primary btn-block btn-secondary" data-toggle="modal" data-target="#newStickyMessage">
-        New Sticky Message
+       <Plus size={32} />New Sticky Message
       </button>
 
       <div className="modal fade" id="newStickyMessage" tabIndex={-1} role="dialog" aria-labelledby="newStickyMessageLabel" aria-hidden="true">

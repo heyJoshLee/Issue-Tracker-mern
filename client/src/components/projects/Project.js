@@ -8,7 +8,7 @@ import StickyMessagesList from '../stickyMessages/StickyMessagesList';
 import StickyMessageForm from '../stickyMessages/Form';
 import IssuesContainer from '../issues/IssuesContainer';
 import ReturnLink from '../shared/ReturnLink';
-
+import Form from '../issues/Form';
 const Project = (props) => {
 
   const dispatch = useDispatch();
@@ -47,6 +47,12 @@ const Project = (props) => {
       <h1 className="text-center">{project.title}</h1>
       <StickyMessageForm type="project" />
       <StickyMessagesList type="project" />
+      <div className="row">
+        <h2 className="mt-4 col-8">Issues</h2>        
+          <div className="col-4">
+            <Form/>
+          </div>
+        </div>
       <IssuesContainer />
     </div>
 
