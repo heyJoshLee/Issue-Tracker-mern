@@ -1,13 +1,13 @@
 import React, {useEffect} from 'react';
-import { useDispatch, useSelector} from 'react-redux';
-import { getOrganization } from '../../actions/organizations';
-import { getProjects } from '../../actions/projects';
 import ProjectForm  from '../projects/Form';
 import ProjectsList from '../projects/ProjectsList';
 import StickyMessagesList from '../stickyMessages/StickyMessagesList';
 import StickyMessageForm from '../stickyMessages/Form';
 import ReturnLink from '../shared/ReturnLink';
+import { useDispatch, useSelector} from 'react-redux';
 import { getStickyMessages } from '../../actions/stickyMessages';
+import { getOrganization } from '../../actions/organizations';
+import { getProjects } from '../../actions/projects';
 
 const Organization = (props) => {
 

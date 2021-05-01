@@ -8,9 +8,7 @@ const FlashMessages = () => {
   const handleClick = () => {
     dispatch(clearMessages());
   }
-
-  const renderMessages = () => {
-    
+  const renderMessages = () => { 
     return flashMessages.map(msg => {
       return  (
         <div className={`alert alert-${msg.type} alert-dismissible fade show`} role="alert">
@@ -22,8 +20,6 @@ const FlashMessages = () => {
       )
     })
   }
-
-
 
   return (
     <div>

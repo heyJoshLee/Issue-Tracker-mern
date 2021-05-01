@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Trash, PencilSquare } from 'react-bootstrap-icons';
-import { useDispatch } from 'react-redux';
-import { deleteStickyMessage } from '../../actions/stickyMessages';
 import UpdateForm from './UpdateForm';
 import CommentsList from '../comments/CommentsList';
+import { useDispatch } from 'react-redux';
+import { deleteStickyMessage } from '../../actions/stickyMessages';
+import { Trash, PencilSquare } from 'react-bootstrap-icons';
+
+
 
 const StickyMessageListItem = ({stickyMessage}) => {
   const dispatch = useDispatch();

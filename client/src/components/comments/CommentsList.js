@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CommentListItem from './CommentListItem';
+import Loading from '../shared/Loading';
 import Form from './Form';
 import { useDispatch } from 'react-redux';
 import { getComments } from '../../actions/comments';
@@ -8,8 +9,10 @@ const CommentsList = ({parent, type}) => {
   const [comments, setComments] = useState([]);
   const dispatch = useDispatch();
   
+  // @ts-ignore
   useEffect(async () => {
     let response = await dispatch(getComments(type, parent._id));
+    // @ts-ignore
     setComments(response); 
   }, [])
 
@@ -25,13 +28,12 @@ const CommentsList = ({parent, type}) => {
     setComments(newComments);
   }
 
-
   const renderComments = () => {
     return comments.map(comment => {
-      return <CommentListItem comment={comment} deleteLocalComment={deleteLocalComment} />
+      return <CommentListItem key={comment._id} comment={comment} deleteLocalComment={deleteLocalComment} />
     })
   }
-  if (!comments) { return <div>Loading...</div>}
+  if (!comments) { return <Loading />}
   return (
     <div className="comments-list">
       {renderComments()}

@@ -1,21 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { deleteIssue } from '../../actions/issues';
-import { Trash, PencilSquare } from 'react-bootstrap-icons';
 import UpdateForm from './UpdateForm';
 import CommentsList from '../comments/CommentsList';
+import { useDispatch, useSelector } from 'react-redux';
 import { getComments } from '../../actions/comments';
+import { deleteIssue } from '../../actions/issues';
+import { Trash, PencilSquare } from 'react-bootstrap-icons';
 
 const IssueListItem = ({issue}) => {
   const dispatch = useDispatch();
-  // let comments;
-  // useEffect(async () => {
-  //   comments = await dispatch(getComments("issue", issue._id));
-  // }, [])
-
   const org = useSelector(state => state.organization);
   const project = useSelector(state => state.project);
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(false);
 
   const renderButton = () => {
     let buttonClass;
@@ -82,7 +77,6 @@ const IssueListItem = ({issue}) => {
             {issue.body}
           </div>
           <CommentsList parent={issue} type="issue"/>
-
         </div>
       </div>
     </div>

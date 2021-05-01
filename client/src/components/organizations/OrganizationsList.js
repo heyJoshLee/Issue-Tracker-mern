@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
+import OrganizationItem from './OrganizationItem';
 import { useSelector, useDispatch } from 'react-redux';
 import { getOrganizations } from '../../actions/organizations';
-import OrganizationItem from './OrganizationItem';
 
 function OrganizationsList() {
 
@@ -12,8 +12,6 @@ useEffect(() => {
   dispatch(getOrganizations());
 }, []);
 
-
-
 const renderOrgs = () => {
   if (orgs) {
     return orgs.map(org => {
@@ -21,7 +19,6 @@ const renderOrgs = () => {
     })
   }
 }
-
 
   return (
     <div>

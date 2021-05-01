@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom';
 
 const Form = () => {
   const history = useHistory();
-
   const dispatch = useDispatch();
   const organization = useSelector((state) => state.organization);
   const [formData, setFormData] = useState({
@@ -14,7 +13,6 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(history);
     dispatch(createOrganization(formData));
     history.push("/organizations");
   }

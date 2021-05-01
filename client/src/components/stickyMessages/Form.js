@@ -1,11 +1,8 @@
 import React, {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import jQuery from 'jquery';
 import { createStickyMessage } from '../../actions/stickyMessages';
 import { Plus } from 'react-bootstrap-icons';
-// import {Editor, EditorState} from 'draft-js';
-// import 'draft-js/dist/Draft.css';
-// import MyEditor from './MyEditor';
+import jQuery from 'jquery';
 
 const Form = ({type}) => {
   const dispatch = useDispatch();
@@ -35,7 +32,6 @@ const Form = ({type}) => {
       <button type="button" className="mt-4 btn btn-primary btn-block btn-secondary" data-toggle="modal" data-target="#newStickyMessage">
        <Plus size={32} />New Sticky Message
       </button>
-
       <div className="modal fade" id="newStickyMessage" tabIndex={-1} role="dialog" aria-labelledby="newStickyMessageLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">

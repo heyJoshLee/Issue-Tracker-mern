@@ -1,8 +1,8 @@
 import React, {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProject } from '../../actions/projects';
-import jQuery from 'jquery';
 import { Plus } from 'react-bootstrap-icons';
+import jQuery from 'jquery';
 
 const Form = () => {
 
@@ -14,7 +14,6 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     setFormData({
       title: ""
     });
@@ -27,8 +26,7 @@ const Form = () => {
       <button type="button" className="mt-4 btn btn-primary btn-block" data-toggle="modal" data-target="#newProject">
         <Plus size={32} /> New Project
       </button>
-
-      <div className="modal fade" id="newProject" tabIndex="-1" role="dialog" aria-labelledby="newProjectLabel" aria-hidden="true">
+      <div className="modal fade" id="newProject" tabIndex={-1} role="dialog" aria-labelledby="newProjectLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <div className="modal-header">
@@ -38,7 +36,6 @@ const Form = () => {
               </button>
             </div>
             <div className="modal-body">
-
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="title">Title</label>

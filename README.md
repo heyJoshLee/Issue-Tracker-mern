@@ -5,14 +5,11 @@ Projects have sticky messages and issues.
 Issues have comments
 
 TODO:
-WHERE I LEFT OFF: comments controller create comment.
 
-- Comments belong to issues and maybe sticky messsages
+change color for active thing when editing.
 
-- Add Issues
-
-  - Sort issues
-  - pagination
+- Sort issues
+- pagination for issues
 
 - Prompt user to join an organization if they are not in one
 - User signs up or logs in
@@ -25,12 +22,6 @@ WHERE I LEFT OFF: comments controller create comment.
     - Users page shows a table of users
     - Admin can edit and delete users
     - Admin can add other users
-
-- Issues
-
-  - Can be sorted.
-  - Paginate.
-  - Can include comments
 
 - Adding other users to organization
 

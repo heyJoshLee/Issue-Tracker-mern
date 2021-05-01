@@ -7,6 +7,7 @@ import User from '../models/user.js';
 
 export const createIssue = async (req, res) => {
   const issueParams = req.body.issueParams;
+  console.log("CREATE ISSUE")
   console.log(req.body);
   console.log(req.params)
   try {
@@ -31,8 +32,6 @@ export const updateIssue = async (req, res) => {
   const issueParams = req.body.issueParams;
   try {
     const issue = await Issue.findByIdAndUpdate(id, issueParams, { new: true})
-    console.log("UPDATED issue")
-    console.log(issue)
     res.status(200).json(issue);
   } catch (error) {
     console.log(error)
@@ -42,9 +41,12 @@ export const updateIssue = async (req, res) => {
 
 
 export const getIssues = async (req, res) => {
+  console.log(req.params)
   try {
     const project = await Project.findById(req.params.projectId);
-    const projectName = project.name;
+    const projectName = project.title;
+    console.log("PROJECT NAME")
+    console.log(projectName);
     const issues = await Issue.where({ projectProjectName: projectName});
     res.status(200).json(issues);
   } catch (error) {
@@ -72,10 +74,8 @@ export const getIssues = async (req, res) => {
 
 export const deleteIssue = async (req, res) => {
   const id = req.params.id;
-  console.log(req.params)
   try {
     await Issue.findByIdAndRemove(id);
-    console.log("DELETED ITEM")
     res.status(200).json({ message: "Successfully deleted",  id: id});
   } catch (error) {
     console.log(error)

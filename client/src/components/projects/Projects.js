@@ -1,8 +1,7 @@
 import React from 'react';
 import Form from './Form/Form';
+import ProjectsList from './ProjectList/ProjectsList';
 import { useSelector } from 'react-redux';
-
-import ProjectList from './ProjectList/ProjectList';
 
 const Projects = () => {
 

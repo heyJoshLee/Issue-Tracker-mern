@@ -1,12 +1,14 @@
 import React, {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import jQuery from 'jquery';
 import { createIssue } from '../../actions/issues';
 import { Plus } from 'react-bootstrap-icons';
+import jQuery from 'jquery';
 
 const Form = ({type}) => {
   const dispatch = useDispatch();
+  // @ts-ignore
   const project = useSelector(state => state.project);
+  // @ts-ignore
   const org = useSelector(state => state.organization);
   const [formData, setFormData] = useState({
     title: "",
@@ -17,7 +19,6 @@ const Form = ({type}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
     dispatch(createIssue(org._id, project._id, formData));
     setFormData({
       title: "",
@@ -30,10 +31,9 @@ const Form = ({type}) => {
 
   return (
     <div>
-      <button type="button" className="mt-4 btn btn-primary btn-block btn-secondary" data-toggle="modal" data-target="#newIssue">
+      <button type="button" className="mt-4 btn btn-primary btn-block" data-toggle="modal" data-target="#newIssue">
        <Plus size={32} />New Issue
       </button>
-
       <div className="modal fade" id="newIssue" tabIndex={-1} role="dialog" aria-labelledby="newIssueLabel" aria-hidden="true">
         <div className="modal-dialog" role="document">
           <div className="modal-content">
@@ -44,7 +44,6 @@ const Form = ({type}) => {
               </button>
             </div>
             <div className="modal-body">
-
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label htmlFor="title">Title</label>
@@ -54,10 +53,10 @@ const Form = ({type}) => {
                   <label htmlFor="title">Body</label>
                   <textarea onChange={(e) => setFormData({ ...formData, body: e.target.value})} value={formData.body} className="form-control" id="email" aria-describedby="title"></textarea>
                 </div>
-                <div class="form-group">
-                  <label for="statusSelect">Priority</label>
+                <div className="form-group">
+                  <label htmlFor="statusSelect">Priority</label>
                   <select 
-                  class="form-control" 
+                  className="form-control" 
                   id="prioritySelect"
                   onChange={(e) => setFormData({ ...formData, priority: e.target.value})}>
                     <option value="1">Low</option>
@@ -66,9 +65,9 @@ const Form = ({type}) => {
                     <option value="4">Urgent</option>
                   </select>
                  </div>
-                <div class="form-group">
-                  <label for="statusSelect">Status</label>
-                  <select onChange={(e) => setFormData({ ...formData, status: e.target.value})} class="form-control" id="statusSelect">
+                <div className="form-group">
+                  <label htmlFor="statusSelect">Status</label>
+                  <select onChange={(e) => setFormData({ ...formData, status: e.target.value})} className="form-control" id="statusSelect">
                     <option value="active">Active</option>
                     <option value="complete">Complete</option>
                     <option value="archived">Archived</option>

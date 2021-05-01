@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Trash } from 'react-bootstrap-icons';
-import { deleteComment } from '../../actions/comments';
 import { useDispatch } from 'react-redux';
+import { deleteComment } from '../../actions/comments';
+import { Trash } from 'react-bootstrap-icons';
 
 const CommentListItem = ({comment, deleteLocalComment}) => {
   const dispatch = useDispatch();
@@ -26,7 +26,6 @@ const CommentListItem = ({comment, deleteLocalComment}) => {
           <div className="col-2">
             {renderAuthorButtons()}
           </div>
-
         </div>
         <div className="row">
           <div className="col-2">
@@ -36,7 +35,6 @@ const CommentListItem = ({comment, deleteLocalComment}) => {
             {comment.body}
           </div> 
         </div>
-
       </div>
     </div>
   )

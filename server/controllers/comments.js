@@ -3,8 +3,6 @@ import Issue from '../models/issue.js';
 import User from '../models/user.js';
 import Comment from '../models/comment.js';
 
-
-
 export const createComment = async (req, res) => {
   const commentParams = req.body.commentParams;
   const { objectType, objectId } = req.params;
@@ -45,18 +43,14 @@ export const createComment = async (req, res) => {
 
 export const getComments = async (req, res) => {
   try {
-    console.log("GETTING COMMENTS")
     const { objectType, objectId } = req.params;
     let parentObject;
     if (objectType === "stickyMessage") {
-      console.log("GET StickyMessage")
       parentObject = await StickyMessage.findById(objectId);
     } else {
       parentObject = await Issue.findById(objectId);
     }
-    console.log(parentObject.id)
     const comments = await Comment.where({objectId: parentObject.id})
-    console.log(comments);
     res.status(200).json(comments);
   } catch (error) {
     console.log(error);

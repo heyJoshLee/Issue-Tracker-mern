@@ -1,6 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import ProjectListItem from './ProjectListItem';
+import { useSelector } from 'react-redux';
 
 const ProjectsList = (props) => {
   const projects = useSelector(state => state.projects);
@@ -9,7 +9,7 @@ const ProjectsList = (props) => {
     <div>
       <ul>
         {projects.map(project => {
-          return <ProjectListItem project={project} />
+          return <ProjectListItem key={project._id} project={project} />
         })}
       </ul>
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { createComment } from '../../actions/comments';
 import { useDispatch } from 'react-redux';
+import { createComment } from '../../actions/comments';
 
 const Form = ({ parent, addLocalComment, type }) => {
   const dispatch = useDispatch();

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { updateStickyMessage } from '../../actions/stickyMessages';
 
 const UpdateForm = ({ stickyMessage, toggleEditMode }) => {
@@ -12,7 +12,6 @@ const UpdateForm = ({ stickyMessage, toggleEditMode }) => {
   const handleSubmit = (e) =>  {
     e.preventDefault();
     toggleEditMode();
-    console.log(formData)
     dispatch(updateStickyMessage(stickyMessage._id, formData));
   }
 

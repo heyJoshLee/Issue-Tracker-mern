@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { updateIssue } from '../../actions/issues';
 import { useDispatch, useSelector } from 'react-redux';
+import { updateIssue } from '../../actions/issues';
+
 const UpdateForm = ({issue, toggleEditMode}) => {
   const dispatch = useDispatch();
   const project = useSelector(state => state.project);
@@ -16,7 +17,6 @@ const UpdateForm = ({issue, toggleEditMode}) => {
   const handleSubmit = (e) =>  {
     e.preventDefault();
     toggleEditMode();
-    console.log(formData)
     dispatch(updateIssue(org._id, project._id, issue._id, formData));
   }
 
@@ -27,9 +27,9 @@ const UpdateForm = ({issue, toggleEditMode}) => {
           <div className="row">
             {/* Slect box for status */}
             <div className="col-3" >
-            <div class="form-group">
+            <div className="form-group">
               <select 
-              class="form-control" 
+              className="form-control" 
               id="prioritySelect"
               value={formData.priority}
               onChange={(e) => setFormData({ ...formData, priority: e.target.value})}>
@@ -42,9 +42,9 @@ const UpdateForm = ({issue, toggleEditMode}) => {
             </div>
             {/* Slect box for status */}
             <div className="col-3" >
-            <div class="form-group">
+            <div className="form-group">
               <select 
-              class="form-control" 
+              className="form-control" 
               id="statusSelect"
               value={formData.status}
               onChange={(e) => setFormData({ ...formData, status: e.target.value})}>

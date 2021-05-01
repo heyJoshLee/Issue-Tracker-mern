@@ -10,15 +10,13 @@ const IssuesContainer = () => {
   const org = useSelector(state => state.organization);
   const project = useSelector(state => state.project)
 
-
   useEffect(() => {
     dispatch(getIssues(org._id, project._id));
-  }, [])
-
+  }, [project])
 
   const renderItems = () => {
     return issues.map(issue => {
-      return <IssueListItem issue={issue} />
+      return <IssueListItem key={issue._id} issue={issue} />
     })
   }
 

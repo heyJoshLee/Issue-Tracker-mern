@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { Trash, PencilSquare } from 'react-bootstrap-icons';
-import { getProject } from '../../actions/projects';
-import { getOrganization } from '../../actions/organizations';
 import StickyMessagesList from '../stickyMessages/StickyMessagesList';
 import StickyMessageForm from '../stickyMessages/Form';
 import IssuesContainer from '../issues/IssuesContainer';
 import ReturnLink from '../shared/ReturnLink';
 import Form from '../issues/Form';
+import { useDispatch, useSelector } from 'react-redux';
+import { getOrganization } from '../../actions/organizations';
+import { getProject } from '../../actions/projects';
+
 const Project = (props) => {
 
   const dispatch = useDispatch();

@@ -6,7 +6,6 @@ import { errorFlashMessage, addFlashMessage } from './helpers.js';
 export const getIssues = (orgId, projectId) => async (dispatch) => {
   try {
     const { data } = await api.fetchIssues(orgId, projectId);
-    console.log(data)
     dispatch({
       type: FETCH_ISSUES,
       payload: data
