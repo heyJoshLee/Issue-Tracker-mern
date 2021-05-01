@@ -145,13 +145,13 @@ export const createStickyMessage = (newStickyMessage, objectType, objectId, user
   });
 }
 
-// export const updateProject = (projectId, postParams, userToken = token) => {
-//   return axios.patch(`${projectsURL}/${projectId}`, postParams, {
-//     headers: { 
-//       "x-auth-token": userToken
-//     }
-//   })
-// }
+export const updateStickyMessage = (stickyMessageId, stickyMessageParams, userToken = token) => {
+  return axios.patch(`${stickyMessagesURL}/${stickyMessageId}`, stickyMessageParams, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  })
+}
 
 export const deleteStickyMessage = (stickyMessageId, userToken = token) =>  {
   return axios.delete(`${stickyMessagesURL}/${stickyMessageId}`, {

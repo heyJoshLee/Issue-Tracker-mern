@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Trash, PencilSquare } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import { deleteStickyMessage } from '../../actions/stickyMessages';
-
+import UpdateForm from './UpdateForm';
 const StickyMessageListItem = ({stickyMessage}) => {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
@@ -18,6 +18,14 @@ const StickyMessageListItem = ({stickyMessage}) => {
             <PencilSquare className="hover mr-3" onClick={toggleEditMode} />
             <Trash onClick={handleDelete} className="hover mr-3" />
           </div>
+  }
+
+  if (editMode){
+    return <UpdateForm 
+            stickyMessage={stickyMessage} 
+            editMode={editMode}
+            toggleEditMode={toggleEditMode}
+             />
   }
 
   return (

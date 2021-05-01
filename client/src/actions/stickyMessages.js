@@ -18,20 +18,6 @@ export const getStickyMessages = (objectType, objectId) => async (dispatch) => {
   }
 }
 
-// export const getStickyMessage = (orgId, stickyMessageId) => async (dispatch) => {
-//   try {
-//     const { data } = await api.fetchStickyMessage(orgId, stickyMessageId);
-//     console.log("ACTION")
-//     console.log(data);
-//     dispatch({
-//       type: FETCH_STICKY_MESSAGE,
-//       payload: data
-//     })
-//   } catch (error) {
-//     console.log(error)
-//     errorFlashMessage(error, dispatch, "danger");
-//   }
-// }
 
 export const createStickyMessage = (stickyMessage, objectType, objectId) => async (dispatch, getState) => {
   try {
@@ -49,20 +35,20 @@ export const createStickyMessage = (stickyMessage, objectType, objectId) => asyn
   }
 }
 
-// export const updateStickyMessage = (stickyMessageId, postParams) => async (dispatch, getState) => {
-//   try {
+export const updateStickyMessage = (stickyMessageId, postParams) => async (dispatch, getState) => {
+  try {
   
-//     const { data } = await api.updateStickyMessage(stickyMessageId, postParams, getState().auth.token);
-//     dispatch({
-//       type: UPDATE_STICKY_MESSAGE,
-//       payload: data
-//     });
-//     // addFlashMessage("Post successfully updated.", dispatch)
-//   } catch (error) {
-//     console.log(error);
-//     errorFlashMessage(error, dispatch, "danger");
-//   }
-// }
+    const { data } = await api.updateStickyMessage(stickyMessageId, postParams);
+    dispatch({
+      type: UPDATE_STICKY_MESSAGE,
+      payload: data
+    });
+    addFlashMessage("Post successfully updated.", dispatch)
+  } catch (error) {
+    console.log(error);
+    errorFlashMessage(error, dispatch, "danger");
+  }
+}
 
 export const deleteStickyMessage = (stickyMessageId) => async (dispatch, getState) => {
   try {
