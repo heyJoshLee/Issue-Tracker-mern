@@ -153,14 +153,13 @@ export const createStickyMessage = (newStickyMessage, objectType, objectId, user
 //   })
 // }
 
-// export const deleteProject = (projectId, userToken = token) =>  {
-//   console.log(userToken)
-//   return axios.delete(`${projectsURL}/${projectId}`, {
-//     headers: { 
-//       "x-auth-token": userToken
-//     }
-//   });
-// }
+export const deleteStickyMessage = (stickyMessageId, userToken = token) =>  {
+  return axios.delete(`${stickyMessagesURL}/${stickyMessageId}`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
 
 
 

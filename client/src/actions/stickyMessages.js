@@ -64,16 +64,16 @@ export const createStickyMessage = (stickyMessage, objectType, objectId) => asyn
 //   }
 // }
 
-// export const deleteStickyMessage = (stickyMessageId) => async (dispatch, getState) => {
-//   try {
-//     await api.deleteStickyMessage(stickyMessageId, getState().auth.token);
-//     dispatch({
-//       type: DELETE_STICKY_MESSAGE,
-//       payload: stickyMessageId
-//     });
-//     // addFlashMessage("Post successfully deleted.", dispatch)
-//   } catch (error) {
-//     console.log(error);
-//     errorFlashMessage(error, dispatch, "danger");
-//   }
-// }
+export const deleteStickyMessage = (stickyMessageId) => async (dispatch, getState) => {
+  try {
+    await api.deleteStickyMessage(stickyMessageId);
+    dispatch({
+      type: DELETE_STICKY_MESSAGE,
+      payload: stickyMessageId
+    });
+    addFlashMessage("Post successfully deleted.", dispatch)
+  } catch (error) {
+    console.log(error);
+    errorFlashMessage(error, dispatch, "danger");
+  }
+}

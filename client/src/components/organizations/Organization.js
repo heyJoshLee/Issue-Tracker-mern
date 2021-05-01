@@ -28,7 +28,7 @@ const Organization = (props) => {
         <div className="row">
           <h2 className="mt-4 col-8">Sticky Messages</h2>        
             <div className="col-4">
-              <StickyMessageForm/>
+              <StickyMessageForm type="organization"/>
             </div>
         </div>
 

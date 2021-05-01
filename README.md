@@ -6,10 +6,13 @@ Issues have comments
 
 TODO:
 
+WHERE I LEFT OFF:
+sticky messsages controller for update and delete
+
 - Add Issues
-  * Create issues
-  * Sort issues
-  * pagination
+
+  - Sort issues
+  - pagination
 
 - Prompt user to join an organization if they are not in one
 - User signs up or logs in
@@ -29,7 +32,6 @@ TODO:
 - Project page
   - Issues.
   - Can create sticky message. Admin
-  - Can create isssue.
 - Issues
   - Can be sorted.
   - Paginate.

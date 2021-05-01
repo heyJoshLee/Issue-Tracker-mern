@@ -37,7 +37,7 @@ const IssueListItem = ({issue}) => {
   }
 
   const handleDelete = () => {
-    const confirm = window.confirm("Are you sure you want to delete this project?")
+    const confirm = window.confirm("Are you sure you want to delete this issue?")
     if (confirm) { dispatch(deleteIssue(org._id, project._id, issue._id))}
   }
 

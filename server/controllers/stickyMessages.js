@@ -30,22 +30,22 @@ export const createStickyMessage = async (req, res) => {
   }
 }
 
-// export const updatestickyMessage = async (req, res) => {
-//   const id = req.params.id;
-//   const stickyMessageParams = req.body;
-//   console.log(stickyMessageParams);
-//   console.log("Looking for stickyMessage with id")
-//   console.log(id)
-//   try {
-//     const stickyMessage = await stickyMessage.findByIdAndUpdate(id, stickyMessageParams, { new: true})
-//     console.log("UPDATED stickyMessage")
-//     console.log(stickyMessage)
-//     res.status(200).json(stickyMessage);
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json({ message: "stickyMessage was not updated."});
-//   }
-// }
+export const updateStickyMessage = async (req, res) => {
+  const id = req.params.id;
+  const stickyMessageParams = req.body;
+  console.log(stickyMessageParams);
+  console.log("Looking for stickyMessage with id")
+  console.log(id)
+  try {
+    const stickyMessage = await StickyMessage.findByIdAndUpdate(id, stickyMessageParams, { new: true})
+    console.log("UPDATED stickyMessage")
+    console.log(stickyMessage)
+    res.status(200).json(stickyMessage);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: "stickyMessage was not updated."});
+  }
+}
 
 
 export const getstickyMessages = async (req, res) => {
@@ -85,13 +85,13 @@ export const getstickyMessages = async (req, res) => {
 //   }
 // }
 
-// export const deletestickyMessage = async (req, res) => {
-//   const id = req.params.id;
-//   try {
-//     await stickyMessage.findByIdAndRemove(id);
-//     res.status(200).json({ message: "Successfully deleted",  id: id});
-//   } catch (error) {
-//     console.log(error)
-//     res.status(500).json({ message: "stickyMessage was not delete."});
-//   }
-// }
+export const deleteStickyMessage = async (req, res) => {
+  const id = req.params.id;
+  try {
+    await StickyMessage.findByIdAndRemove(id);
+    res.status(200).json({ message: "Successfully deleted",  id: id});
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: "stickyMessage was not delete."});
+  }
+}
