@@ -21,6 +21,10 @@ const stickyMessageSchema = new mongoose.Schema({
   objectId: {
     type: String,
     require: true
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now
   }
 });
 

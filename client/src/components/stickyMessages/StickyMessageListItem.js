@@ -3,6 +3,8 @@ import { Trash, PencilSquare } from 'react-bootstrap-icons';
 import { useDispatch } from 'react-redux';
 import { deleteStickyMessage } from '../../actions/stickyMessages';
 import UpdateForm from './UpdateForm';
+import CommentsList from '../comments/CommentsList';
+
 const StickyMessageListItem = ({stickyMessage}) => {
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
@@ -44,6 +46,7 @@ const StickyMessageListItem = ({stickyMessage}) => {
       <div className="card-body">
         {stickyMessage.body}
       </div>
+      <CommentsList parent={stickyMessage} type="stickyMessage"/>
     </div>
   </div>
   )

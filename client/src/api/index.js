@@ -14,14 +14,11 @@ if (token) {
 const BASEURL = 'http://localhost:5000';
 
 const projectsURL =`${BASEURL}/projects`;
-
 const organizationsURL =`${BASEURL}/organizations`;
-
 const logInURL = `${BASEURL}/auth/login`;
-
 const usersURL = `${BASEURL}/users`;
-
 const stickyMessagesURL = `${BASEURL}/stickyMessages`;
+const commentsURL = `${BASEURL}/comments`;
 
 
 
@@ -194,6 +191,37 @@ export const updateIssue = (organizationId, projectId, issueId, issueParams, use
   return axios.patch(`${BASEURL}/organizations/${organizationId}/projects/${projectId}/issues/${issueId}`, {
     issueParams: issueParams
   }, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+
+// Comments
+
+export const fetchComments = (objectType, objectId, userToken = token) => {
+  return axios.get(`${commentsURL}/${objectType}/${objectId}`, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+export const createComment = (newComment, objectType, objectId, userToken = token) =>  {
+  return axios.post(`${commentsURL}/${objectType}/${objectId}`, {
+    commentParams: newComment,
+    objectType, 
+    objectId
+  }, {
+    headers: { 
+      "x-auth-token": userToken
+    }
+  });
+}
+
+export const deleteComment = (commentId, userToken = token) =>  {
+  return axios.delete(`${commentsURL}/${commentId}`, {
     headers: { 
       "x-auth-token": userToken
     }

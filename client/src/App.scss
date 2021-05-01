@@ -1,0 +1,9 @@
+.comments-list {
+  padding: 10px;
+  .comment {
+    background-color: #f7f7f7;
+    .comment__user-image {
+      height: 50px;
+    }
+  }
+}

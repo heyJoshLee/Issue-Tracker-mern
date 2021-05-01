@@ -10,6 +10,7 @@ import projectRoutes from './routes/projects.js';
 import authRoutes from './routes/auth.js';
 import organizationRoutes from './routes/organizations.js';
 import stickyMessageRoutes from './routes/stickyMessages.js'; 
+import commentRoutes from './routes/comments.js'; 
 import issueRoutes from './routes/issues.js';
 
 dotenv.config();
@@ -27,6 +28,7 @@ app.use('/organizations', organizationRoutes);
 app.use('/organizations/:id/projects', projectRoutes);
 app.use('/organizations/:orgId/projects/:projectId/issues', issueRoutes);
 app.use('/stickyMessages', stickyMessageRoutes); 
+app.use('/comments', commentRoutes); 
 
 
 // CONNECT TO MONGO DB

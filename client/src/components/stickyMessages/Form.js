@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import jQuery from 'jquery';
 import { createStickyMessage } from '../../actions/stickyMessages';
 import { Plus } from 'react-bootstrap-icons';
+// import {Editor, EditorState} from 'draft-js';
+// import 'draft-js/dist/Draft.css';
+// import MyEditor from './MyEditor';
 
 const Form = ({type}) => {
   const dispatch = useDispatch();
@@ -12,14 +15,13 @@ const Form = ({type}) => {
   const [formData, setFormData] = useState({
     title: "",
     body: ""
-  })
+  });
+
+
   let objectType = type === "organization" ? organization : project;
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formData);
-    console.log(type)
-    console.log(objectType._id)
     dispatch(createStickyMessage(formData, type, objectType._id))
     setFormData({
       title: "",
@@ -51,7 +53,8 @@ const Form = ({type}) => {
                   <input onChange={(e) => setFormData({ ...formData, title: e.target.value})} value={formData.title} className="form-control" id="email" aria-describedby="title"/>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="title">Body</label>
+                  <label htmlFor="title">Body</label>  
+                  <div id="textarea"></div>                
                   <textarea onChange={(e) => setFormData({ ...formData, body: e.target.value})} value={formData.body} className="form-control" id="email" aria-describedby="title"></textarea>
                 </div>
                 <div className="modal-footer">

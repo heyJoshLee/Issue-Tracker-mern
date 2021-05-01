@@ -1,11 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteIssue } from '../../actions/issues';
 import { Trash, PencilSquare } from 'react-bootstrap-icons';
 import UpdateForm from './UpdateForm';
+import CommentsList from '../comments/CommentsList';
+import { getComments } from '../../actions/comments';
 
 const IssueListItem = ({issue}) => {
   const dispatch = useDispatch();
+  // let comments;
+  // useEffect(async () => {
+  //   comments = await dispatch(getComments("issue", issue._id));
+  // }, [])
+
   const org = useSelector(state => state.organization);
   const project = useSelector(state => state.project);
   const [editMode, setEditMode] = useState(false)
@@ -57,9 +64,8 @@ const IssueListItem = ({issue}) => {
             toggleEditMode={toggleEditMode}
              />
   }
-
-
   return (
+    <div classsName="issue-list-item">
       <div className="card">
         <div className="card-header" id={`heading-${issue._id}`}>
           <h5 className="mb-0">
@@ -71,12 +77,14 @@ const IssueListItem = ({issue}) => {
             </div>
           </h5>
         </div>
-
-        <div id={`collapse-${issue._id}`} className="collapse show" aria-labelledby={`heading-${issue._id}`} data-parent="#accordion-issues">
+        <div id={`collapse-${issue._id}`} className="collapse" aria-labelledby={`heading-${issue._id}`} data-parent="#accordion-issues">
           <div className="card-body">
             {issue.body}
           </div>
+          <CommentsList parent={issue} type="issue"/>
+
         </div>
+      </div>
     </div>
   )
 }

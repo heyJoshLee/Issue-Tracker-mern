@@ -25,6 +25,10 @@ const issueSchema = new mongoose.Schema({
   projectProjectTitle: {
     type: String,
     required: true
+  },
+  timestamp: {
+    type: Date,
+    default: Date.now
   }
 });
 

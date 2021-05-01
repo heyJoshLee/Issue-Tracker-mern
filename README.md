@@ -5,6 +5,9 @@ Projects have sticky messages and issues.
 Issues have comments
 
 TODO:
+WHERE I LEFT OFF: comments controller create comment.
+
+- Comments belong to issues and maybe sticky messsages
 
 - Add Issues
 
@@ -24,10 +27,10 @@ TODO:
     - Admin can add other users
 
 - Issues
+
   - Can be sorted.
   - Paginate.
   - Can include comments
-- Comments belong to issues and maybe sticky messsages
 
 - Adding other users to organization
 
