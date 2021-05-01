@@ -1,6 +1,5 @@
 import { ADD_FLASH_MESSAGE } from '../types/index';
 
-
 export const errorFlashMessage = (error, dispatch, type = "success") => {
   const message = {
     message: error.response.data.message, 

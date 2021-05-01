@@ -16,14 +16,14 @@ const UpdateForm = ({ stickyMessage, toggleEditMode }) => {
   }
 
   return (
-    <div className="card">
+    <div className="card card--active">
       <form onSubmit={handleSubmit} >
         <div className="row card-header">
           <div className="col-10">
-                <input className="form-control" onChange={(e) => setFormData({ ...formData, title: e.target.value})} value={formData.title} />
+              <input className="form-control" onChange={(e) => setFormData({ ...formData, title: e.target.value})} value={formData.title} />
           </div>
           <div className="col-2">
-            <input type="submit" className="btn btn-success" value="Save" />
+            <input type="submit" className="btn btn-primary" value="Save" />
           </div>
         </div>
           <div className="card-body">

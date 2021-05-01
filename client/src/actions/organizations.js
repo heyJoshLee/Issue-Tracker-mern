@@ -1,7 +1,6 @@
 import * as api from '../api';
-import { FETCH_ORGANIZATIONS, FETCH_ORGANIZATION, CREATE_ORGANIZATION, DELETE_ORGANIZATION, UPDATE_ORGANIZATION} from '../types/index';
+import { FETCH_ORGANIZATIONS, FETCH_ORGANIZATION, CREATE_ORGANIZATION, DELETE_ORGANIZATION, UPDATE_ORGANIZATION } from '../types/index';
 import { errorFlashMessage, addFlashMessage } from './helpers.js'; 
-
 
 export const getOrganizations = () => async (dispatch, getState) => {
   try {
@@ -33,8 +32,6 @@ export const getOrganization= (organizationId) => async (dispatch, getState) => 
 export const createOrganization= (organization) => async (dispatch, getState) => {
   try {
     const { data } = await api.createOrganization(organization, getState().auth.token);
-    console.log(data)
-
     dispatch({
       type: CREATE_ORGANIZATION,
       payload: data
@@ -48,7 +45,6 @@ export const createOrganization= (organization) => async (dispatch, getState) =>
 
 export const updateOrganization = (organizationId, organizationParams) => async (dispatch, getState) => {
   try {
-  
     const { data } = await api.updateOrganization(organizationId, organizationParams, getState().auth.token);
     dispatch({
       type: UPDATE_ORGANIZATION,

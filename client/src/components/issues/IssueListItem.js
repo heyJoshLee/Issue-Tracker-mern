@@ -73,8 +73,17 @@ const IssueListItem = ({issue}) => {
           </h5>
         </div>
         <div id={`collapse-${issue._id}`} className="collapse" aria-labelledby={`heading-${issue._id}`} data-parent="#accordion-issues">
-          <div className="card-body">
-            {issue.body}
+        <div className="card-body">
+          <small><strong>{issue.userUsername}</strong> @ {issue.timestamp}</small>
+          <div className="row">
+            <div className="col-2">
+              <img className="rounded-circle issue__user-image" src="/temp-image.jpeg" alt=""/>
+            </div>
+            <div className="col-10">
+              {issue.body}
+            </div>
+          </div>
+
           </div>
           <CommentsList parent={issue} type="issue"/>
         </div>

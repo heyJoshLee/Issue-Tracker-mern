@@ -2,7 +2,6 @@ import * as api from '../api';
 import { FETCH_ISSUES, CREATE_ISSUE, DELETE_ISSUE, UPDATE_ISSUE } from '../types/index';
 import { errorFlashMessage, addFlashMessage } from './helpers.js'; 
 
-
 export const getIssues = (orgId, projectId) => async (dispatch) => {
   try {
     const { data } = await api.fetchIssues(orgId, projectId);
@@ -15,21 +14,6 @@ export const getIssues = (orgId, projectId) => async (dispatch) => {
     errorFlashMessage(error, dispatch, "danger");
   }
 }
-
-// export const getStickyMessage = (orgId, stickyMessageId) => async (dispatch) => {
-//   try {
-//     const { data } = await api.fetchStickyMessage(orgId, stickyMessageId);
-//     console.log("ACTION")
-//     console.log(data);
-//     dispatch({
-//       type: FETCH_STICKY_MESSAGE,
-//       payload: data
-//     })
-//   } catch (error) {
-//     console.log(error)
-//     errorFlashMessage(error, dispatch, "danger");
-//   }
-// }
 
 export const createIssue = (orgId, projectId, newIssue) => async (dispatch, getState) => {
   try {
@@ -52,7 +36,7 @@ export const updateIssue = (orgId, projectId, issueId, issueParams) => async (di
       type: UPDATE_ISSUE,
       payload: data
     });
-    // addFlashMessage("Post successfully updated.", dispatch)
+    addFlashMessage("Post successfully updated.", dispatch)
   } catch (error) {
     console.log(error);
     errorFlashMessage(error, dispatch, "danger");

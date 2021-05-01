@@ -40,8 +40,6 @@ export const createProject = (newProject, orgId, userToken = token) =>  {
 
 
 export const fetchProject = (orgId, projectId) =>  { 
-  console.log('url')
-  console.log(`${organizationsURL}/${orgId}/projects${projectId}`)
   return axios.get(`${organizationsURL}/${orgId}/projects/${projectId}`);
 }
 
@@ -55,7 +53,6 @@ export const updateProject = (projectId, postParams, userToken = token) => {
 }
 
 export const deleteProject = (projectId, userToken = token) =>  {
-  console.log(userToken)
   return axios.delete(`${projectsURL}/${projectId}`, {
     headers: { 
       "x-auth-token": userToken

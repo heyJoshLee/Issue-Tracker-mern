@@ -21,7 +21,7 @@ const UpdateForm = ({issue, toggleEditMode}) => {
   }
 
   return (
-    <div className="card">
+    <div className="card card--active">
       <form>
         <div className="card-header" id={`heading-${issue._id}`}>
           <div className="row">
@@ -61,7 +61,7 @@ const UpdateForm = ({issue, toggleEditMode}) => {
                 <input name="title" className="form-control" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value})} />
               </div>
               <div className="col-2">
-                <input onClick={(e) => handleSubmit(e)} type="submit" className="btn btn-success" value="Save" />
+                <input onClick={(e) => handleSubmit(e)} type="submit" className="btn btn-primary" value="Save" />
               </div>
           </div> {/*row */}
         </div>

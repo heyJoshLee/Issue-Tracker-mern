@@ -46,7 +46,16 @@ const StickyMessageListItem = ({stickyMessage}) => {
 
     <div id={`collapse-${stickyMessage._id}`} className="collapse" aria-labelledby="headingOne" data-parent="#sticky-message-accordion">
       <div className="card-body">
-        {stickyMessage.body}
+      <small><strong>{stickyMessage.userUsername}</strong> @ {stickyMessage.timestamp}</small>
+
+      <div className="row">
+          <div className="col-2">
+            <img className="rounded-circle sticky-message__user-image" src="/temp-image.jpeg" alt=""/>
+          </div>
+          <div className="col-10">
+            {stickyMessage.body}
+          </div> 
+        </div>
       </div>
       <CommentsList parent={stickyMessage} type="stickyMessage"/>
     </div>

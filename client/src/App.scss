@@ -7,3 +7,11 @@
     }
   }
 }
+
+.issue__user-image,
+.sticky-message__user-image {
+  height: 50px;
+}
+.card--active {
+  background-color: lightgreen !important;
+}

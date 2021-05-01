@@ -1,5 +1,5 @@
 import * as api from '../api';
-import { FETCH_COMMENTS, FETCH_COMMENT, CREATE_COMMENT, DELETE_COMMENT, UPDATE_COMMENT} from '../types/index';
+import { CREATE_COMMENT, DELETE_COMMENT } from '../types/index';
 import { errorFlashMessage, addFlashMessage } from './helpers.js'; 
 
 export const getComments = (objectType, objectId) => async (dispatch) => {

@@ -11,8 +11,6 @@ export default (issues = null, action) => {
     case UPDATE_ISSUE:
       let updatedIssues = issues.map(issue => {
         if (issue._id === action.payload._id) {
-          console.log("FOUND IT")
-          console.log(action.payload)
           return action.payload;
         } else {
           return issue;

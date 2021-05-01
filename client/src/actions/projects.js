@@ -2,12 +2,9 @@ import * as api from '../api';
 import { FETCH_PROJECTS, FETCH_PROJECT, CREATE_PROJECT, DELETE_PROJECT, UPDATE_PROJECT} from '../types/index';
 import { errorFlashMessage, addFlashMessage } from './helpers.js'; 
 
-
 export const getProjects = (orgId) => async (dispatch) => {
   try {
     const { data } = await api.fetchProjects(orgId);
-    console.log(data)
-
     dispatch({
       type: FETCH_PROJECTS,
       payload: data
@@ -21,8 +18,6 @@ export const getProjects = (orgId) => async (dispatch) => {
 export const getProject = (orgId, projectId) => async (dispatch) => {
   try {
     const { data } = await api.fetchProject(orgId, projectId);
-    console.log("ACTION")
-    console.log(data);
     dispatch({
       type: FETCH_PROJECT,
       payload: data
@@ -35,11 +30,7 @@ export const getProject = (orgId, projectId) => async (dispatch) => {
 
 export const createProject = (project, orgId) => async (dispatch, getState) => {
   try {
-    
-    console.log("ACTION")
     const { data } = await api.createProject(project, orgId, getState().auth.token);
-    console.log(data)
-    
     dispatch({
       type: CREATE_PROJECT,
       payload: data
@@ -53,13 +44,12 @@ export const createProject = (project, orgId) => async (dispatch, getState) => {
 
 export const updateProject = (projectId, postParams) => async (dispatch, getState) => {
   try {
-  
     const { data } = await api.updateProject(projectId, postParams, getState().auth.token);
     dispatch({
       type: UPDATE_PROJECT,
       payload: data
     });
-    // addFlashMessage("Post successfully updated.", dispatch)
+    addFlashMessage("Project successfully updated.", dispatch)
   } catch (error) {
     console.log(error);
     errorFlashMessage(error, dispatch, "danger");
@@ -73,7 +63,7 @@ export const deleteProject = (projectId) => async (dispatch, getState) => {
       type: DELETE_PROJECT,
       payload: projectId
     });
-    // addFlashMessage("Post successfully deleted.", dispatch)
+    addFlashMessage("Project successfully deleted.", dispatch)
   } catch (error) {
     console.log(error);
     errorFlashMessage(error, dispatch, "danger");

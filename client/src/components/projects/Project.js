@@ -15,19 +15,16 @@ const Project = (props) => {
   const project = useSelector(state => state.project)
   const auth = useSelector((state) => state.auth);
   const projectId = props.match.params.id;
+  
   useEffect(() => {
     if (!org) {
       const orgId = props.match.url.split("/")[2]
-      console.log("ORGID")
-      console.log(orgId)
       dispatch(getOrganization(orgId))
     }
     if (org) {
       dispatch(getProject(org._id, projectId));
     }
   }, [org])
-
-  console.log(props)
 
   const handleDelete = () => {
     const confirm = window.confirm("Are you sure you want to delete this post?");

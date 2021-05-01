@@ -6,8 +6,6 @@ import { errorFlashMessage, addFlashMessage } from './helpers.js';
 export const getStickyMessages = (objectType, objectId) => async (dispatch) => {
   try {
     const { data } = await api.fetchStickyMessages(objectType, objectId);
-    console.log(data)
-
     dispatch({
       type: FETCH_STICKY_MESSAGES,
       payload: data
@@ -18,12 +16,9 @@ export const getStickyMessages = (objectType, objectId) => async (dispatch) => {
   }
 }
 
-
 export const createStickyMessage = (stickyMessage, objectType, objectId) => async (dispatch, getState) => {
   try {
-    
     const { data } = await api.createStickyMessage(stickyMessage, objectType, objectId);
-    
     dispatch({
       type: CREATE_STICKY_MESSAGE,
       payload: data
