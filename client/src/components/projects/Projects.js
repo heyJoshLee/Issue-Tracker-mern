@@ -4,7 +4,6 @@ import ProjectsList from './ProjectList/ProjectsList';
 import { useSelector } from 'react-redux';
 
 const Projects = () => {
-
   const auth = useSelector((state) => state.auth);
 
   return (

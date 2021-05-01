@@ -11,9 +11,6 @@ TODO:
 
 * bug
 
-- issues not updating on switching project
-- issues might not be saving
-
 * Sort issues
 * pagination for issues
 

@@ -7,9 +7,6 @@ import User from '../models/user.js';
 
 export const createIssue = async (req, res) => {
   const issueParams = req.body.issueParams;
-  console.log("CREATE ISSUE")
-  console.log(req.body);
-  console.log(req.params)
   try {
     const currentUser = await User.findById(req.user.id)
     const newIssue = await new Issue(issueParams);
@@ -39,15 +36,11 @@ export const updateIssue = async (req, res) => {
   }
 }
 
-
 export const getIssues = async (req, res) => {
-  console.log(req.params)
   try {
     const project = await Project.findById(req.params.projectId);
-    const projectName = project.title;
-    console.log("PROJECT NAME")
-    console.log(projectName);
-    const issues = await Issue.where({ projectProjectName: projectName});
+    const projectTitle = project.title;
+    const issues = await Issue.where({ projectProjectTitle: projectTitle});
     res.status(200).json(issues);
   } catch (error) {
     console.log(error);
