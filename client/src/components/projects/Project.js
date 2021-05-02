@@ -4,6 +4,7 @@ import StickyMessageForm from '../stickyMessages/Form';
 import IssuesContainer from '../issues/IssuesContainer';
 import ReturnLink from '../shared/ReturnLink';
 import Form from '../issues/Form';
+import Loading from '../shared/Loading';
 import { useDispatch, useSelector } from 'react-redux';
 import { getOrganization } from '../../actions/organizations';
 import { getProject } from '../../actions/projects';
@@ -36,7 +37,7 @@ const Project = (props) => {
   const renderAuthorButtons = () => {
    
   }
-  if (!org || !project ) { return <div>Loading...</div>}
+  if (!org || !project ) { return <Loading />}
   return (
     <div className="project-page"> 
       <ReturnLink destination={`/organizations/${org._id}`} anchorText={"< Back to Organization"} />

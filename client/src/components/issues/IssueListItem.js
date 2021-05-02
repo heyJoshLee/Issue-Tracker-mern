@@ -6,7 +6,7 @@ import { getComments } from '../../actions/comments';
 import { deleteIssue } from '../../actions/issues';
 import { Trash, PencilSquare } from 'react-bootstrap-icons';
 
-const IssueListItem = ({issue}) => {
+const IssueListItem = ({issue, parentDiv}) => {
   const dispatch = useDispatch();
   const org = useSelector(state => state.organization);
   const project = useSelector(state => state.project);
@@ -72,7 +72,7 @@ const IssueListItem = ({issue}) => {
             </div>
           </h5>
         </div>
-        <div id={`collapse-${issue._id}`} className="collapse" aria-labelledby={`heading-${issue._id}`} data-parent="#accordion-issues">
+        <div id={`collapse-${issue._id}`} className="collapse" aria-labelledby={`heading-${issue._id}`} data-parent={parentDiv}>
         <div className="card-body">
           <small><strong>{issue.userUsername}</strong> @ {issue.timestamp}</small>
           <div className="row">

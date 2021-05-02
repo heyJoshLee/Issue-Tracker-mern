@@ -5,7 +5,7 @@ export default (issues = null, action) => {
     case FETCH_ISSUES:
       return action.payload;
     case CREATE_ISSUE:
-      return [...issues, action.payload];
+      return [ ...issues, action.payload];
     case DELETE_ISSUE:
       return issues.filter(project => project._id !== action.payload);
     case UPDATE_ISSUE:
