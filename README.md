@@ -1,8 +1,7 @@
-When user signs up they create an organization and become admin of that orgnization.
-Other users can be invited by email. They receive an email and are automatically added to an organization.
-Each organization has sticky messages and projects.
-Projects have sticky messages and issues.
-Issues have comments
+# Issue Tracker
+
+An app built to track - what else? Issues! This is built to track issues, bugs, or anything else needed for projects or clients.
+[Demo video](https://www.youtube.com/watch?v=q0I65CmZPPc)
 
 TODO:
 
